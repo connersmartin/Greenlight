@@ -22,6 +22,7 @@ namespace GreenlightConsole
         {
             Console.OutputEncoding = System.Text.Encoding.UTF8;
 
+            //Manually added, but would use input eventually
             Member Conner = new Member(1, "Conner", "Drums");
             Member Vince = new Member(2, "Vince", "Guitar");
             Member Evan = new Member(3, "Evan", "Bass");
@@ -39,22 +40,22 @@ namespace GreenlightConsole
 
             bool start = false;
 
+            //constantly repeating until everyone's status is g
             while (!start)
             {
+                //clear the console and draw box
                 Console.Clear();
-
                 Console.WriteLine("Polling for status of "+ show.Name + ": ");
-
-                
                 BoxFill();
 
+                //draw band member names
                 foreach (Member member in show.Band)
                 {
                     WriteName(member.Name);
                 }
 
                 Console.WriteLine();
-
+                //capture current status
                 foreach (Member member in show.Band)
                 {
                     if (member.Status != 2)
@@ -78,6 +79,7 @@ namespace GreenlightConsole
                         }
                     }
                 }
+                //exits the loop if everyone is ready
                 if (Ready(show))
                 {
                     start = true;
@@ -86,6 +88,8 @@ namespace GreenlightConsole
             Console.ReadLine();
         }
 
+
+        //Writes the band member name to fit in the box width
         public static void WriteName(string name)
         {
             Console.Write(name);
@@ -95,6 +99,7 @@ namespace GreenlightConsole
             }
         }
 
+        //fills the box with stars
         public static void BoxFill()
         {
             Console.WriteLine(line.PadRight(width, '*'));
@@ -102,6 +107,7 @@ namespace GreenlightConsole
             Console.WriteLine(line.PadRight(width, '*'));
         }
 
+        //fills band member status
         public static string StatusFill()
         {
             foreach (Member member in show.Band)
@@ -124,6 +130,7 @@ namespace GreenlightConsole
             return null;
         }
 
+        //checks to see if everyone has a green status, need a better way for a global status check... if all are red, red, if at least one is green, yellow
         public static bool Ready(Show show)
         {
             var check = 0;
