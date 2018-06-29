@@ -61,7 +61,7 @@ namespace GreenlightConsole
                     if (member.Status != 2)
                     {
                         Console.WriteLine(member.Name + "- R, Y, G: ");
-                        string stat = Console.ReadKey().ToString();
+                        string stat = Console.ReadKey().KeyChar.ToString();
 
                         switch(stat)
                         {
