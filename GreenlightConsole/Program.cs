@@ -147,27 +147,38 @@ namespace GreenlightConsole
             }
         }
 
+        //adds a show 
+        public static void AddShow(string band, string code)
+        {
+            show = new Show(0, band, code, new List<Member>());
+        }
+
+
+        //adds a member to the band
+        public static void AddMember(int id, string name, string instrument)
+        {
+            show.Band.Add(new Member(id, name, instrument));
+        }
+
+        //gets the show for testing
         private static Show GetShow()
         {
+            //would enter in show information
             return new Show(1, "Mannequins By Day", "test", new List<Member>());
         }
 
+        //gets test members
         private static void GetMembers()
         {
             //would want to have option for using name or instrument depending on familiarity
 
-            //Manually added, but would use input eventually
-            Member Conner = new Member(1, "Conner", "Drums");
-            Member Vince = new Member(2, "Vince", "Guitar");
-            Member Evan = new Member(3, "Evan", "Bass");
-            Member Melinda = new Member(4, "Melinda", "Vox");
-            Member Megan = new Member(5, "Megan", "Vox");
+            //Manually added, but would use AddMember eventually
 
-            show.Band.Add(Conner);
-            show.Band.Add(Vince);
-            show.Band.Add(Evan);
-            show.Band.Add(Melinda);
-            show.Band.Add(Megan);
+            show.Band.Add(new Member(1, "Conner", "Drums"));
+            show.Band.Add(new Member(2, "Vince", "Guitar"));
+            show.Band.Add(new Member(3, "Evan", "Bass"));
+            show.Band.Add(new Member(4, "Melinda", "Vox"));
+            show.Band.Add(new Member(5, "Megan", "Vox"));
         }
     }
 }
